@@ -11,10 +11,9 @@ const Header = () => (
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={NavLink} to="/home">Home</Nav.Link>
-            <Nav.Link  as={NavLink} to="/person">Person</Nav.Link>
-            <Nav.Link  as={NavLink} to="/about">About</Nav.Link>
-          </Nav>
-          <Nav className="">
+            <Nav.Link as={NavLink} to="/person">Person</Nav.Link>
+            <Nav.Link as={NavLink} to="/about">About</Nav.Link>
+            <Nav.Link as={NavLink} to="/crud">CrudDemo</Nav.Link>
           </Nav>
 </Container>
 </Navbar>
