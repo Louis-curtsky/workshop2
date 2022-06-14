@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-import {Container, Nav, Navbar} from 'react-bootstrap';
+import {Container, Nav, Navbar, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => (
@@ -14,6 +14,9 @@ const Header = () => (
             <Nav.Link as={NavLink} to="/person">Person</Nav.Link>
             <Nav.Link as={NavLink} to="/about">About</Nav.Link>
             <Nav.Link as={NavLink} to="/crud">CrudDemo</Nav.Link>
+          </Nav>
+          <Nav>
+            <Button variant="dark">Sign Up</Button>
           </Nav>
 </Container>
 </Navbar>
