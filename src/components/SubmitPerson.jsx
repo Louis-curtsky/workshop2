@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { Form, Formik, useField } from 'formik';
+import { Formik, useField } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
+import {Button, Form} from "react-bootstrap";
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -36,20 +37,22 @@ export const SubmitPerson = () => {
           email: Yup.string().email('Invalid email address').required('Required')
         })}
         onSubmit={async values => {
+          console.log(values);
           return await axios.post('https://localhost:44342/People', values).then(res => res);
         }}
       >
         <Form>
-          <MyTextInput label='First Name' name='firstName' type='text' placeholder='Jane' />
-          <MyTextInput label='Last Name' name='lastName' type='text' placeholder='doe' />
+          <h3> </h3>
+          <MyTextInput label='First Name' name='firstName' type='text' placeholder='Jane' />{'  '}
+          <MyTextInput label='Last Name' name='lastName' type='text' placeholder='doe' />{'  '}
           <MyTextInput
             label='E-mail'
             name='email'
             type='email'
             placeholder='JennyHowe@yahoo.com'
-          />
-          <MyTextInput label='Title' name='title' type='text' placeholder='Developer' />
-          <button type='submit'>Submit</button>
+            />{'  '}
+          <MyTextInput label='Title' name='title' type='text' placeholder='Developer' />{'  '}
+          <Button type='submit' variant="secondary">Submit</Button>
         </Form>
       </Formik>
     </>

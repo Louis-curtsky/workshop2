@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import { SubmitPerson } from '../components/SubmitPerson';
 import {PersonRow} from '../components/PersonRow';
+import {Table} from "react-bootstrap";
+
 
 export const CrudDemo = () => {
 
@@ -18,21 +20,19 @@ useEffect(()=> {
 return (
 <>
 <div>
-        <h3>
-        Crud Demo
-        </h3>
-        <hr/>
+  <p></p>
 <div>
-<h1>People List 2022</h1>
+<h3>People List 2022</h3>
+<p></p>
+
       <SubmitPerson className='form' />
-      <table>
+      <Table striped condensed hover>
         <thead>
           <tr>
             <th>Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
             <th>E-mail</th>
-            <th>Title</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -40,7 +40,7 @@ return (
             <PersonRow {...person} />
           ))}
         </tbody>
-      </table>
+      </Table>
 </div>
     </div>
     </>
