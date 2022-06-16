@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { Formik, useField } from 'formik';
+import { Form, Formik, useField } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import {Button, Form} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -39,7 +39,7 @@ export const SubmitPerson = () => {
           email: Yup.string().email('Invalid email address').required('Required')
         })}
 
-        onSubmit={async values => {
+        onSubmit={async values => {console.log(values);
           return await axios.post('https://localhost:44342/People', values).then(res => res);
         }}
       >

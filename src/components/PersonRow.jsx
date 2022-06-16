@@ -9,7 +9,6 @@ export const PersonRow = (props) => {
 
   const [data, setPerson] = useState(props);
   const clickDetailHandle = (item) => {
-    console.log("Detail button pressed", item);
     setOpen(true);
     setPerson(item);
   };
