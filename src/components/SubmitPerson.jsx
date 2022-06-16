@@ -6,6 +6,7 @@ import {Button, Form} from "react-bootstrap";
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
+ 
   return (
     <>
       <label htmlFor={props.id || props.name}>{label}</label>
@@ -25,6 +26,7 @@ export const SubmitPerson = () => {
           email: '',
           title: ''
         }}
+
         validationSchema={Yup.object({
           firstName: Yup.string()
             .min(2, 'Too Short!')
@@ -36,8 +38,8 @@ export const SubmitPerson = () => {
             .required('Required'),
           email: Yup.string().email('Invalid email address').required('Required')
         })}
+
         onSubmit={async values => {
-          console.log(values);
           return await axios.post('https://localhost:44342/People', values).then(res => res);
         }}
       >
@@ -52,7 +54,12 @@ export const SubmitPerson = () => {
             placeholder='JennyHowe@yahoo.com'
             />{'  '}
           <MyTextInput label='Title' name='title' type='text' placeholder='Developer' />{'  '}
-          <Button type='submit' variant="secondary">Submit</Button>
+          <Button 
+          type='submit' 
+          content = 'Submit'
+          onClick={SubmitPerson}
+          variant="secondary"
+          >Submit</Button>
         </Form>
       </Formik>
     </>

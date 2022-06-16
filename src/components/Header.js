@@ -1,9 +1,13 @@
-import React from 'react';
+import React , { useState } from 'react';
 import {NavLink} from 'react-router-dom';
 import {Container, Nav, Navbar, Button} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import OpenPortal from './OpenPortal';
 
-const Header = () => (
+const Header = () => {
+  const [open, setOpen] = useState();
+return (
+  
 <Navbar bg="primary" variant="dark">
 <Container>
           <Navbar.Brand as={NavLink} to="/">
@@ -16,10 +20,11 @@ const Header = () => (
             <Nav.Link as={NavLink} to="/crud">CrudDemo</Nav.Link>
           </Nav>
           <Nav>
-            <Button variant="dark">Sign Up</Button>
+            <Button variant="dark" onClick={() => setOpen(true)}>Sign Up</Button>
+            {open && <OpenPortal>hello world</OpenPortal>}
           </Nav>
 </Container>
 </Navbar>
 
-);
+);}
 export default Header;
