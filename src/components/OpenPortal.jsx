@@ -2,14 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import DetailCard from "./DetailCard";
 
-export const OpenPortal = props => {
+export const OpenPortal = (props) => {
   const [container, setContainer] = useState(null);
   const newWindow = useRef(window);
   
   useEffect(() => {
       const div = document.createElement("div");
-      console.log(props);
-      div.innerHTML = <DetailCard {...props}/>;
+
     setContainer(div);
   }, []);
 
@@ -27,7 +26,7 @@ export const OpenPortal = props => {
   }, [container]);
 
   return (
-  container && createPortal(props.children, container)
+  container && createPortal(<DetailCard {...props} />, container)
 );}
 
 export default OpenPortal

@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import OpenPortal from "./OpenPortal";
 
+
 export const PersonRow = (props) => {
 
   const [data, setPerson] = useState(props);
   const clickDetailHandle = (item) => {
-
     console.log("Detail button pressed", item);
+    setOpen(true);
+    setPerson(item);
   };
   const clickDelete = (item) => {
     setPerson(item);
@@ -18,7 +20,6 @@ export const PersonRow = (props) => {
   };
   const [open, setOpen] = useState();
   const clickEdit = (item) => {
-    setOpen(true);
     setPerson(item);
     console.log(open);
     
@@ -32,8 +33,11 @@ export const PersonRow = (props) => {
         <Button variant="primary"
         type="button"
         onClick={(e) => clickDetailHandle(props)}
-        >Details</Button>
+        >Details
+        {open && <OpenPortal {...data}/>}
+        </Button>
         {' '}
+        
         <Button variant="danger"
         type="button"
         onClick={(e)=>clickDelete(props)} 
@@ -43,7 +47,6 @@ export const PersonRow = (props) => {
         type="button"
         onClick={(e)=>clickEdit(props)}         
         >Edit</Button>
-         {open && <OpenPortal {...data}/>}
       </td>
     </tr>
     
