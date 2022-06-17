@@ -7,7 +7,7 @@ export const DetailCard =(item)=>{
       <h2>Person Detail</h2>
       <hr/>
       <style>
-        {"table{border:1px solid black; border-collapse: collapse; width: 100%"}
+        {"table{border:1px solid black; border-collapse: collapse; width: 100%; font-size: 150%;"}
       </style>
       <style>
       {"th, td {text-align: left;padding: 8px;}"}

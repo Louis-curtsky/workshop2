@@ -5,6 +5,7 @@ import { SubmitPerson } from '../components/SubmitPerson';
 import {PersonRow} from '../components/PersonRow';
 import {Table} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../components/CruDemo.css'
 
 export const CrudDemo = () => {
 
@@ -30,7 +31,7 @@ return (
     </p>
   </h3>
       <SubmitPerson className='form' />
-      <Table striped condensed hover>
+      <table>
         <thead>
           <tr>
             <th>Id</th>
@@ -41,10 +42,10 @@ return (
         </thead>
         <tbody>
           {persons.map(person => (
-               <PersonRow {...person} />
+               <PersonRow {...person}/>
             ))}
         </tbody>
-      </Table>
+      </table>
     </div>
 </div>
     </div>

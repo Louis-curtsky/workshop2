@@ -21,7 +21,6 @@ export const PersonRow = (props) => {
   const clickEdit = (item) => {
     setPerson(item);
     console.log(open);
-    
   }
   return(
     <tr key={props.id}>

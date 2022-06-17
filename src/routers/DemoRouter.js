@@ -14,12 +14,12 @@ const DemoRouter = () => {
     <BrowserRouter>
         <Header />
         <Routes>
-            <Route path="*"      element={<NotFoundPage />} /> 
-            <Route path="/"      element={<WelcomePage />} />
-            <Route path="/home"  element={<HomePage />} /> 
+            <Route path="*"       element={<NotFoundPage />} /> 
+            <Route path="/"       element={<WelcomePage />} />
+            <Route path="/home"   element={<HomePage />} /> 
             <Route path="/person" element={<PersonPage />} /> 
-            <Route path="/about" element={<AboutPage />} /> 
-            <Route path="/crud" element={<CrudDemo />} /> 
+            <Route path="/about"  element={<AboutPage />} /> 
+            <Route path="/crud"   element={<CrudDemo />}/> 
             <Route path="/detail" element={<DetailCard/>} />
         </Routes>
     </BrowserRouter>
