@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import { SubmitPerson } from '../components/SubmitPerson';
 import {PersonRow} from '../components/PersonRow';
-import {Table} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/CruDemo.css'
 
@@ -19,7 +18,6 @@ useEffect(()=> {
     getPersons().then(res => setPerson(res.data));
 });
 
-
 return (
 <>
 <div className="card">
@@ -34,16 +32,16 @@ return (
       <table>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Action</th>
+          <th>Id</th>
+          <th>Name</th>
+          <th>E-mail</th>
+          <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {persons.map(person => (
-               <PersonRow {...person}/>
-            ))}
+          {persons.map((person, idx) => (           
+             <PersonRow key={idx}{...person}/>
+          ))}
         </tbody>
       </table>
     </div>

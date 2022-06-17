@@ -5,7 +5,7 @@ import DetailCard from "./DetailCard";
 export const OpenPortal = (props) => {
   const [container, setContainer] = useState(null);
   const newWindow = useRef(window);
-  
+
   useEffect(() => {
       const div = document.createElement("div");
 
