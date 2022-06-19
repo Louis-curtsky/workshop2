@@ -31,12 +31,14 @@ export const SubmitPerson = () => {
           firstName: Yup.string()
             .min(2, 'Too Short!')
             .max(80, 'Must be 80 characters or less')
-            .required('Required'),
+            .required('This is Required'),
           lastName: Yup.string()
             .min(2, 'Too Short!')
             .max(80, 'Must be 80 characters or less')
-            .required('Required'),
-          email: Yup.string().email('Invalid email address').required('Required')
+            .required('This is Required'),
+          email: Yup.string()
+            .email('Invalid email address')
+            .required('This is Required')
         })}
 
         onSubmit={async values => {console.log(values);
@@ -44,7 +46,6 @@ export const SubmitPerson = () => {
         }}
       >
         <Form>
-          <h3> </h3>
           <MyTextInput label='First Name' name='firstName' type='text' placeholder='Jane' />{'  '}
           <MyTextInput label='Last Name' name='lastName' type='text' placeholder='doe' />{'  '}
           <MyTextInput
@@ -59,7 +60,12 @@ export const SubmitPerson = () => {
           content = 'Submit'
           onClick={SubmitPerson}
           variant="secondary"
-          >Submit</Button>
+          >Add</Button>
+          <Button 
+          onClick={() => window.location.reload()}
+          variant="danger"
+          >Reset</Button>;
+          <div><h4>List</h4></div>
         </Form>
       </Formik>
     </>

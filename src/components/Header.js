@@ -8,7 +8,7 @@ const Header = () => {
   const [open, setOpen] = useState();
 return (
   
-<Navbar bg="primary" variant="dark">
+<Navbar bg="info" variant="dark">
 <Container>
           <Navbar.Brand as={NavLink} to="/">
               Welcome

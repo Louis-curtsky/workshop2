@@ -3,9 +3,11 @@ import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import OpenPortal from "./OpenPortal";
+import {useNavigate} from 'react-router-dom';
+
 
 export const PersonRow = (props) => {
-
+  const navigate = useNavigate();
   const [data, setPerson] = useState(props);
   const clickDetailHandle = (item) => {
     setOpen(true);
@@ -20,7 +22,15 @@ export const PersonRow = (props) => {
   const [open, setOpen] = useState();
   const clickEdit = (item) => {
     setPerson(item);
-    console.log(open);
+
+    console.log('Update:'+data.id
+    +data.firstName
+    +data.lastName
+    +data.email
+    );
+    navigate('/update/', {replace: true,
+      state: { DATA: data },
+    });
   }
   return(
    <>

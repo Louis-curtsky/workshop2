@@ -1,6 +1,6 @@
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/DetailCard.css';
+
 export const DetailCard =(item)=>{
     return(
     <div>
