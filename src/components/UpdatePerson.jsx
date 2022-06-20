@@ -39,8 +39,7 @@ const UpdatePerson =_=>{
             console.log(error);
         }); */
 
-      
-        const res = axios.put("https://localhost:44342/People/", +{putId} + (null), {
+        const res = axios.put("https://localhost:44342/People/",+{putId}+(null), {
             params: {
             //   ...body
             id:putId,
@@ -50,13 +49,11 @@ const UpdatePerson =_=>{
             title: body.title
             },
           }
-          ,{
+/*           ,{
             headers:{
                 'Accept': 'application/json',
-                'Content-Type': 'application/json, text/plain, */*',
-                'connection': 'keep-alive',
-                'Accept':'*/*'
-            }}
+                'Content-Type': 'application/json'
+            }} */
           ).then(res=>res)
           .catch(err => console.log(err));
         }
