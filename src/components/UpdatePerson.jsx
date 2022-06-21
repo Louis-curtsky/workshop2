@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import '../components/UpdatePerson.css';
 
@@ -11,56 +11,19 @@ const UpdatePerson =_=>{
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
     }
-    const handleSubmit = (e) => {
+    const handleSubmit=(e)=> {
         e.preventDefault();
         
-        const { id,  firstName, lastName, email, title } = inputs;
-        const body = { id, firstName, lastName, email, title };
-        const json = JSON.stringify(body);
-        
-        console.log('json/json: '+id+json);
-        const putId = JSON.stringify(state.DATA.id);
-       
-/*         axios({ 
-            method: 'put',
-            url: '//localhost:44342/People/',
-            
-            // data: json
-            id: json.id,
-            firstName: json.firstName,
-            lastName: json.lastName,
-            email: json.email,
-            title: json.title
-        })
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
-        }); */
+        const { firstName, lastName, email, title } = inputs;
+        const body = { 
+            firstName, lastName, email, title };
+        // const json = JSON.stringify(body);
 
-        const res = axios.put("https://localhost:44342/People/",+{putId}+(null), {
-            params: {
-            //   ...body
-            id:putId,
-            firstName: body.firstName,
-            lastName: body.lastName,
-            email:body.email,
-            title: body.title
-            },
-          }
-/*           ,{
-            headers:{
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }} */
-          ).then(res=>res)
-          .catch(err => console.log(err));
-        }
-    //    axios.put('https://localhost:44342/People/', json).then(res => res);
-       
+        const putId = state.DATA.id;
+            console.log(body);
 
-
+        const res= async body => {console.log(body); return await axios.put('https://localhost:44342/People', body).then(res => res);}
+    } // End of handleSubmit
 return(
     <div>
         <h4>Edit Person</h4><hr/>
