@@ -6,7 +6,6 @@ import {Button} from "react-bootstrap";
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
- 
   return (
     <>
       <label htmlFor={props.id || props.name}>{label}</label>
@@ -40,7 +39,6 @@ export const SubmitPerson = () => {
             .email('Invalid email address')
             .required('This is Required')
         })}
-
         onSubmit={async values => {console.log(values);
           return await axios.post('https://localhost:44342/People', values).then(res => res);
         }}

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import '../components/UpdatePerson.css';
 
@@ -12,41 +12,23 @@ const UpdatePerson =_=>{
         setInputs(values => ({...values, [name]: value}))
     }
 
+    
 const handleSubmit=(e)=> {
     e.preventDefault();
        
-    // console.log(body);
-            const { firstName, lastName, email, title } = inputs;
-            const putId = state.DATA.id;
-            const body = { 
-                id: putId,
-                firstName: firstName,
-                lastName:  lastName, 
-                email: email, 
-                title: title };
-            console.log("Body:"+body);
-            axios.put("https://localhost:44342/People/",+{putId}+(null), 
-            {
-                params: {
-                //    body
-                id: putId
-                }},
-            {    data: {
-                    firstName: body.firstName,
-                    lastName:  body.lastName, 
-                    email: body.email, 
-                    title: body.title     
-                }
-            }
-           ,{
-                headers:{ 
-                "Accept" : "application/json",
-                "Content-Type" : 'application/json;charset=UTF-8',
-                "Schema" : 'array',
-                "Accesscontrolalloworigin" : '*', 
-                }}
-            ).then(res => console.log(res.headers))
-              .catch(err => console.log(err)); 
+    const { firstName, lastName, email, title } = inputs;
+    const putId = state.DATA.id;
+    const body = { 
+        id: putId,
+        firstName: firstName,
+        lastName:  lastName, 
+        email: email, 
+        title: title };
+    console.log("Body:"+body);
+    const updateP =async res=> await axios.put(`https://localhost:44342/People/${putId}`, body)
+    .then(res => res)
+    .catch(err => console.log('body:'+ JSON.stringify(body)+'\n'+err));
+    updateP(); 
 
     } // End of handleSubmit
 return(
