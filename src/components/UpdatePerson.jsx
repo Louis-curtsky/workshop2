@@ -22,7 +22,8 @@ const UpdatePerson =_=>{
 
       var {id, firstName, lastName, email, title} = state.DATA;
       var body = {id, firstName, lastName, email, title};
-      console.log("BF"+JSON.stringify(body));     
+
+      // To fullfil API requirement
       var data=  {id, firstName, lastName, email, title};
       if (inputs.firstName!=null)
       data.firstName=inputs.firstName;
@@ -39,7 +40,9 @@ const UpdatePerson =_=>{
         email: data.email, 
         title: data.title
       };
-       console.log("AF"+JSON.stringify(body));     
+  
+      // Can replace with Axios
+      
   try{
         const response = fetch(`https://localhost:44342/People/`, {
               method: "put",
