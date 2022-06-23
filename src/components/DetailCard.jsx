@@ -1,7 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components/DetailCard.css';
+import { useNavigate } from "react-router-dom";
 
 export const DetailCard =(item)=>{
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    navigate(`/crud/`);
+  }
     return(
     <div>
       <h2>Person Detail</h2>
@@ -11,12 +16,8 @@ export const DetailCard =(item)=>{
       </style>
       <style>
       {"th, td {text-align: left;padding: 8px;}"}
-      </style>
-      <style>
-      {"tr:nth-child(even){background-color: #f2f2f2}"}
-      </style>
-      <style>
         {"th {background-color: #042baa;color: white;}"}
+      {"tr:nth-child(even){background-color: #f2f2f2}"}
       </style>
     <table>
       <thead>
@@ -44,9 +45,25 @@ export const DetailCard =(item)=>{
   {item.email}
 </td>
   </tr>
+  <tr>
+<th>
+  Title
+</th>
+<td>
+  {item.title}
+</td>
+  </tr>
 </tbody>
     {/* <Button variant="primary">Close</Button> */}
 </table>
+<div>
+  <div>
+    <p> </p>
+  </div>
+<button className='styles.button'
+ onClick={routeChange}
+>Close</button>
+</div>
    </div>
 );}
 export default DetailCard;

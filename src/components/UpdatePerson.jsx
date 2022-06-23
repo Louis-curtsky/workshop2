@@ -1,54 +1,67 @@
-import axios from 'axios';
 import React, {useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import '../components/UpdatePerson.css';
+import OpenPortal from './OpenPortal';
 
 const UpdatePerson =_=>{
     const { state } = useLocation();
     const [inputs, setInputs] = useState({});
+    const [open, setOpen] = useState();
+    const [data, setPerson] = useState();
+
     const handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs(values => ({...values, [name]: value}))
-    }
-
-const handleSubmit=(e)=> {
+    } // end handleChange
+ 
+  const handleSubmit=(e)=> 
+  {
     e.preventDefault();
-       
-    // console.log(body);
-            const { firstName, lastName, email, title } = inputs;
-            const putId = state.DATA.id;
-            const body = { 
-                id: putId,
-                firstName: firstName,
-                lastName:  lastName, 
-                email: email, 
-                title: title };
-            console.log("Body:"+body);
-            axios.put("https://localhost:44342/People/",+{putId}+(null), 
-            {
-                params: {
-                //    body
-                id: putId
-                }},
-            {    data: {
-                    firstName: body.firstName,
-                    lastName:  body.lastName, 
-                    email: body.email, 
-                    title: body.title     
-                }
-            }
-           ,{
-                headers:{ 
-                "Accept" : "application/json",
-                "Content-Type" : 'application/json;charset=UTF-8',
-                "Schema" : 'array',
-                "Accesscontrolalloworigin" : '*', 
-                }}
-            ).then(res => console.log(res.headers))
-              .catch(err => console.log(err)); 
+    setOpen(true);
 
-    } // End of handleSubmit
+      var {id, firstName, lastName, email, title} = state.DATA;
+      var body = {id, firstName, lastName, email, title};
+      console.log("BF"+JSON.stringify(body));     
+      var data=  {id, firstName, lastName, email, title};
+      if (inputs.firstName!=null)
+      data.firstName=inputs.firstName;
+      if (inputs.lastName!=null)
+      data.lastName=inputs.lastName;
+      if (inputs.email!=null)
+      data.email=inputs.email;
+      if (inputs.title!=null)
+      data.title=inputs.title;
+      body = {
+        id:state.DATA.id, 
+        firstName: data.firstName, 
+        lastName: data.lastName, 
+        email: data.email, 
+        title: data.title
+      };
+       console.log("AF"+JSON.stringify(body));     
+  try{
+        const response = fetch(`https://localhost:44342/People/`, {
+              method: "put",
+              headers: {
+                    "Content-Type": "application/json",
+              },
+              body: JSON.stringify(body),
+              });
+        
+              if (!response.ok) {
+                const message = 'Error with Status Code: ' + response.status;
+                throw new Error(message);
+              }
+              const data = response.json();
+              console.log(data);
+            }
+    catch (error)
+    {
+      console.log(data);
+    }
+    setPerson(data);
+  } // End of handleSubmit
 return(
     <div>
         <h4>Edit Person</h4><hr/>
@@ -101,7 +114,11 @@ return(
         </label>
         <input type="submit" />
     </form>
+    <div>
+    {open && <OpenPortal {...data}/>}
     </div>
-)}
+    </div>
+  );
+}
 
 export default UpdatePerson;

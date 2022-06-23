@@ -9,17 +9,19 @@ import {useNavigate} from 'react-router-dom';
 export const PersonRow = (props) => {
   const navigate = useNavigate();
   const [data, setPerson] = useState(props);
+  const [open, setOpen] = useState();
+
   const clickDetailHandle = (item) => {
     setOpen(true);
     setPerson(item);
     console.log(data);
   };
-  const clickDelete = (item) => {
+  const clickDeleteHandle = (item) => {
     setPerson(item);
     const url= 'https://localhost:44342/People/'+item.id;
     axios.delete(url).then(() => Element.innerHTML = 'item Deleted');
   };
-  const [open, setOpen] = useState();
+  
   const clickEdit = (item) => {
     setPerson(item);
 
@@ -49,7 +51,7 @@ export const PersonRow = (props) => {
         
         <Button variant="danger"
         type="button"
-        onClick={(e)=>clickDelete(props)} 
+        onClick={(e)=>clickDeleteHandle(props)} 
         >Delete</Button>
         {' '}       
         <Button variant="warning"
